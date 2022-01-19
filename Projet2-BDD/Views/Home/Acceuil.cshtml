@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Projet2_BDD.Models.Messagerie>
+@{ 
+    ViewData["Title"] = "Home page";
+    Layout = "~/Views/Shared/LayoutTest.cshtml";
+    var userName = User.Identity.Name;
+}
+<div class=" jumbotron bg-light">
+    <h2 class=" " text-center text-primary">
+        <i class="fab fa-facebook-messenger"></i>&nbsp; Chat
+    </h2>
+
+    <div class="row">
+        <div class="col-md-12" id="chat">
+            @if (Model != null)
+            {
+                @foreach (var message in Model.OrderBy(m => m.DateMessage))
+                {
+                    string containerClass, timePosition, textAlign, contcolor, offset;
+                    if (userName == message.UserName)
+                    { 
+
+                        containerClass = "container dark";
+                        timePosition = "time-right text-light";
+                        textAlign = "text-right text-white";
+                        contcolor = "bg-primary";
+                        offset = "col-md-6 offset-md-6";
+                    }
+                    else
+                    {
+                        containerClass = "container";
+                        timePosition = "time-left";
+                        textAlign = "text-left";
+                        contcolor = "bg-light";
+                        offset = "";
+                    }
+            <div class=" row">
+                <div class="@offset">
+                    <div class=" @containerClass @contcolor ">
+                        <p class="sender @textAlign">@message.UserName</p>
+                        <p class=" @textAlign">@message.Message</p>
+                        <span class=" @timePosition">@message.DateMessage.ToString()</span>
+                    </div>
+                </div>
+            </div>
+                     
+                }
+            }
+        </div>
+        <div class="col-md-12">
+             @using (Html.BeginForm("Create", "Home", FormMethod.Post)) { @Html.Label("Text", "Saissez le message si tu es déja un Adhérent ")   @Html.TextBox("Text", null, new { id = "MessageText", @class = "form-control" })<br />
+
+            <input type="submit" value=" Envoyer" id="submitButton" class="btn btn-primary" />
+            @Html.TextBox("username", "@userName")<br />
+        }
+    </div>
+    </div>
+      
+    </div>
+
+   

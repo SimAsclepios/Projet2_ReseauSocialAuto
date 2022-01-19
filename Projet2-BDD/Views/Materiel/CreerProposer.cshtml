@@ -1,0 +1,130 @@
+﻿@model Projet2_BDD.ViewModels.ProposerServiceMaterielViewModel
+
+@{
+    Layout = "~/Views/Shared/LayoutTest.cshtml";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div> <a> @Html.ActionLink("Retour", "Index", "Publication")</a></div>
+
+        <!--Occupe 6 colonnes-->
+        <div class="col-6 bg-danger">
+
+            <div class="card">
+                <div class="card-header  bg-danger text-justify text-white">
+                    <h5>Vendre un objet</h5>
+                </div>
+                <div class="card-body">
+
+
+                    @using (Html.BeginForm("CreerProposer", "Materiel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        @Html.LabelFor(m => m.Titre)
+                                        @Html.TextBoxFor(m => m.Titre, new { @class = "form-control", required = "" })
+                                        @Html.ValidationMessageFor(m => m.Titre)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        @Html.LabelFor(m => m.Categorie)
+                                        @Html.TextBoxFor(m => m.Categorie, new { @class = "form-control", required = "" })
+                                        @Html.ValidationMessageFor(m => m.Categorie)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        @Html.LabelFor(m => m.Prix)
+                                        @Html.TextBoxFor(m => m.Prix, new { @class = "form-control", placeholder = "20 euros", required = "" })
+                                        @Html.ValidationMessageFor(m => m.Prix)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        @Html.LabelFor(m => m.DateDemande)
+                                        @Html.TextBoxFor(m => m.DateDemande, new { @class = "form-control", placeholder = "12/03/2021", required = "" })
+                                        @Html.ValidationMessageFor(m => m.DateDemande)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        @Html.LabelFor(m => m.Description)
+                                        @Html.TextAreaFor(m => m.Description, new { @class = "form-control", required = "" })
+                                        @Html.ValidationMessageFor(m => m.Description)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        @Html.TextBoxFor(m => Model.Image, new { @class = "form-control", type = "file", accept = "image" })
+                                        @Html.ValidationMessageFor(m => Model.Image, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        <div class="submit-button text-lg-right">
+                                            <button type="submit" value="Save" class=" bg-danger">Créer Publication</button>
+                                            <button type="reset" class="bg-danger">Effacer</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 bg-danger">
+            <div class="nav-pills">
+                <ol>
+                    <li>
+                        @Html.ActionLink("Liste des objets", "Liste", "Materiel")
+                    </li>
+                    <li>Profitez du savoir-faire des adhérents et de l'entraide de la communauté</li>
+                </ol>
+            </div>
+
+            <article>
+                <img src="~/images/portfolio/PiecesAuto.jpg" style="width:100%">
+                <p></p>
+            </article>
+
+        </div>
+    </div>
+</div>

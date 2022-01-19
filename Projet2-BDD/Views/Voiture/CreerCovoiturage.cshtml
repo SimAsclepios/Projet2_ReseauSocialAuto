@@ -1,0 +1,152 @@
+﻿@model Projet2_BDD.ViewModels.CovoiturageViewModel
+
+@{
+    Layout = "~/Views/Shared/LayoutTest.cshtml";
+}
+
+
+
+<div class="container">
+    <div class="row">
+        <div> <a> @Html.ActionLink("Retour", "Index", "Publication")</a></div>
+
+        <!--Occupe 6 colonnes-->
+        <div class="col-6 bg-danger">
+
+            <div class="card">
+                <div class="card-header  bg-danger text-justify text-white">
+                    <h5>Covoiturage</h5>
+                </div>
+                <div class="card-body">
+
+
+                    @using (Html.BeginForm("CreerCovoiturage", "Voiture", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        @Html.Label("ville de départ") :
+                                        @Html.TextBoxFor(m => m.VilleDepart, new { @class = "form-control", required = "" })
+                                        @Html.ValidationMessageFor(m => m.VilleDepart)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        @Html.Label("Ville d'arrivée") :
+                                        @Html.TextBoxFor(m => m.VilleArrivee, new { @class = "form-control", required = "" })
+                                        @Html.ValidationMessageFor(m => m.VilleArrivee)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        @Html.Label("Ville étape") :
+                                        @Html.TextBoxFor(m => m.VilleEtape, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.VilleEtape)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        <!-- Ajout de la date et de l'heure -->
+                                        @Html.Label("Date de départ") :
+                                        @Html.TextBoxFor(m => m.DateDepart, new { @class = "form-control", Type = "date", placeholder = "01/11/2021", required = "" })
+                                        @Html.ValidationMessageFor(m => m.DateDepart)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        @Html.Label("Nombre de places") :
+                                        @Html.TextBoxFor(m => m.NbPlace, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.NbPlace)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        @Html.LabelFor(m => m.Prix) :
+                                        @Html.TextBoxFor(m => m.Prix, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.Prix)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        @Html.Label("Commentaire")
+                                        @Html.TextAreaFor(m => m.Description, new { @class = "form-control", placeholder = "Publiez votre annonce", required = "" })
+                                        @Html.ValidationMessageFor(m => m.Description)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        <div class="submit-button text-lg-right">
+                                            <button type="submit" value="Save" class=" bg-danger">Créer Publication</button>
+                                            <button type="reset" class="bg-danger">Effacer</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 bg-danger">
+            <div class="nav-pills">
+                @*<ol>
+                    <li>
+                        @Html.ActionLink("Liste des covoiturages", "AfficherCovoiturage", "Voiture")
+                    </li>
+                    <li>Profitez du savoir-faire des adhérents et de l'entraide de la communauté</li>
+                </ol>*@
+            </div>
+
+            <article>
+                <img src="~/images/portfolio/Covoit.jpg" style="width:100%">
+                <p></p>
+            </article>
+
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script src="~/Scripts/Myscript.js"></script>

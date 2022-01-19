@@ -1,0 +1,301 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/css/style-starter.css" rel="stylesheet" />
+    <a href="~/fonts/fontawesome-webfont.eot"></a>
+    <a href="~/fonts/fontawesome-webfont.ttf"></a>
+    <a href="~/fonts/fontawesome-webfont.woff"></a>
+    <a href="~/fonts/fontawesome-webfont.woff2"></a>
+    <a href="~/fonts/FontAwesome.otf"></a>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/jquery-3.3.1.min.js"></script>
+    <script src="~/js/jquery.countup.js"></script>
+    <script src="~/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/js/jquery.waypoints.min.js"></script>
+    <script src="~/js/owl.carousel.js"></script>
+    <script src="~/js/theme-change.js"></script>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/style.css" rel="stylesheet" />
+
+
+</head>
+<body>
+    <!--header-->
+
+    <div class="container-fluid px-3" style="background-color: black" ;>
+
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            @{
+                if (User.Identity.IsAuthenticated)
+                {
+                    <a class="navbar-brand" href="#page-top">Bonjour @User.Identity.Name</a>
+
+                }
+                else
+                {
+                    <a class="navbar-brand" href="#page-top">Bienvenue</a>
+                }
+            }
+
+
+
+
+            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="fa icon-expand fa-bars"></span>
+                <span class="fa icon-close fa-times"></span>
+            </button>
+            <div class="col-md-2">
+                <!-- <a href="#" class="logo"></a> -->
+                <img src="images/Logo_RSA.png" class="logo" alt="logo RSA" />
+            </div>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="container" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto flex-row">
+
+                        @{
+                            if (User.Identity.IsAuthenticated)
+                            {
+                               
+                                <li class="nav-item mx-0 mx-lg-1" style="color: #00ffff;">@Html.ActionLink("Accueil", "Index", "Home", new { @class = "nav-link py-3 px-0 px-lg-3 rounded" })</li>
+
+                                <li class="nav-item mx-0 mx-lg-1"> @Html.ActionLink("Profil", "Index", "Profil") </li>
+                                @*<li class="nav-item mx-0 mx-lg-1">@Html.ActionLink("A propos", "About", "Home", new { @class = "nav-link py-3 px-0 px-lg-3 rounded" })</li>
+                                <li class="nav-item mx-0 mx-lg-1">@Html.ActionLink("Contact", "Contact", "Home", new { @class = "nav-link py-3 px-0 px-lg-3 rounded" })</li>*@
+                                <li class="nav-item mx-0 mx-lg-1">@Html.ActionLink("Rechercher", "Index", "Recherche", new { @class = "nav-link py-3 px-0 px-lg-3 rounded" }) </li>
+                                <li class="nav-item mx-0 mx-lg-1">@Html.ActionLink("Publier", "Index", "Publication", new { @class = "nav-link py-3 px-0 px-lg-3 rounded" })</li>
+                                <li class="nav-item mx-0 mx-lg-1">@Html.ActionLink("Messagerie", "Index", "Messagerie", new { @class = "nav-link py-3 px-0 px-lg-3 rounded" })</li>
+
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <li class="nav-item mx-0 mx-lg-1">@Html.ActionLink("Admin", "Index", "Admin", new { @class = "nav-link py-3 px-0 px-lg-3 rounded" })</li>
+                                }
+
+
+                                <li class="nav-item mx-0 mx-lg-1">@Html.ActionLink("Déconnexion", "Deconnexion", "Login", new { @class = "nav-link py-3 px-0 px-lg-3 rounded" })</li>
+
+                                <li>
+                                    <ul class="navbar-nav search-right mt-lg-0 mt-2">
+                                        <li class="nav-item mr-3" title="Search">
+                                            <a href="#search" class="btn search-search">
+                                                <span class="fa fa-search "></span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item mx-0 mx-lg-1">@Html.ActionLink("Se Connecter", "Index", "Login", new { @class = "nav-link py-3 px-0 px-lg-3 rounded" })</li>
+                                <li class="nav-item mx-0 mx-lg-1">@Html.ActionLink("Créer un compte", "CreerCompte", "Login", new { @class = "nav-link py-3 px-0 px-lg-3 rounded" })</li>
+                            }
+
+                        }
+                    </ul>
+                </div>
+                <ul class="navbar-nav search-right mt-lg-0 mt-2">
+                </ul>
+
+                <!-- //toggle switch for light and dark theme -->
+                <!-- search popup -->
+                <div id="search" class="pop-overlay">
+                    <div class="popup">
+                        <form action="#" method="GET" class="d-sm-flex">
+                            <input type="search" placeholder="Search.." name="search" required="required" autofocus>
+                            <button type="submit">Search</button>
+                            <a class="close" href="#url">&times;</a>
+                        </form>
+                    </div>
+                </div>
+                <!-- /search popup -->
+            </div>
+            <!-- toggle switch for light and dark theme -->
+            @*<div class="mobile-position">
+                <nav class="navigation">
+                    <div class="theme-switch-wrapper">
+                        <label class="theme-switch" for="checkbox">
+                            <input type="checkbox" id="checkbox">
+                            <div class="mode-container">
+                                <i class="gg-sun"></i>
+                                <i class="gg-moon"></i>
+                            </div>
+                        </label>
+                    </div>
+                </nav>
+            </div>*@
+        </nav>
+    </div>
+
+    <!--/header-->
+    <div class="container">
+        @RenderBody()
+    </div>
+    <!-- footer-66 -->
+
+    <footer class="w3l-footer-66" style="height: 100px;">
+        <section class="footer-inner-main px-3">
+
+
+            <div>
+                <div class="text-txt">
+
+                    <div class="right-side">
+                        <div class="row sub-columns">
+                            <div class="col-lg-4 col-md-6 sub-one-left pr-lg-4">
+                                @*<h2>
+                                    <a class="navbar-brand" href="index.html">
+                                        <span>Réseau Social de l'automobile</span>
+                                    </a>
+                                </h2>*@
+
+
+                                
+                                <div class="columns-2">
+                                    <ul class="social">
+                                        <li>
+                                            <a href="#facebook"><span class="fa fa-facebook" aria-hidden="true"></span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#linkedin"><span class="fa fa-linkedin" aria-hidden="true"></span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#twitter"><span class="fa fa-twitter" aria-hidden="true"></span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#google"><span class="fa fa-google-plus" aria-hidden="true"></span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#github"><span class="fa fa-github" aria-hidden="true"></span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="col-md- col-lg-4 col-xs-12 col-sm-12 footer-right">
+                               
+                                <ul class="sub-contact-info"  style="display: flex; align-items: center;">
+                                    <li class="links px-3">@Html.ActionLink("A propos", "About", "Home", new { @class = "nav-link py-3 px-0 px-lg-3 rounded" })</li>
+                                    <li class="links px-3">@Html.ActionLink("Contact", "Contact", "Home", new { @class = "nav-link py-3 px-0 px-lg-3 rounded" })</li>
+                                    
+
+                                    @*<p class="my-3">tel: <strong><a href="tel:+24160033999">+33  33 33 93 99</a></strong></p>
+                                    <p>E-mail:<strong> <a href="mailto:info@example.com">inforsa@gmail.com</a></strong></p>*@
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="below-section">
+                <div class="container">
+                    <div class="copyright-footer">
+                        <div class="columns text-lg-left">
+                            <p>© 2021 RSA. All Rights Reserved.</p>
+                        </div>
+                        <ul class="columns text-lg-right">
+
+                            <li>
+                                <a href="#">Terms Of Use</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- copyright -->
+            <!-- move top -->
+            <button onclick="topFunction()" id="movetop" title="Go to top">
+                <span class="fa fa-long-arrow-up" aria-hidden="true"></span>
+            </button>
+            <script>
+                // When the user scrolls down 20px from the top of the document, show the button
+                window.onscroll = function () {
+                    scrollFunction()
+                };
+
+                function scrollFunction() {
+                    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                        document.getElementById("movetop").style.display = "block";
+                    } else {
+                        document.getElementById("movetop").style.display = "none";
+                    }
+                }
+
+                // When the user clicks on the button, scroll to the top of the document
+                function topFunction() {
+                    document.body.scrollTop = 0;
+                    document.documentElement.scrollTop = 0;
+                }
+            </script>
+            <!-- /move top -->
+
+
+        </section>
+    </footer>
+    <!--//footer-66 -->
+    <script src="~/js/jquery-3.3.1.min.js"></script>
+    <script src="~/js/jquery.validate-vsdoc.js"></script>
+    <script src="~/js/jquery.validate.unobtrusive.js"></script>
+    <script src="~/js/Myscript.js"></script>
+</body>
+</html>
+
+@*
+
+    @{
+                                if (User.Identity.IsAuthenticated)
+                                {
+                                    <li class="nav-item mx-0 mx-lg-1">@Html.ActionLink("Accueil", "Index", "Home", new { @class = "nav-link py-3 px-0 px-lg-3 rounded" })</li>
+                                    @if (ViewBag("Accueil") || ViewBag("A_Propos") || ViewBag("Contact") || ViewBag("Recherche") || ViewBag("Publier") || ViewBag("Publier_Mat"))
+                                    {
+                                        <li class="nav-item mx-0 mx-lg-1"> @Html.ActionLink("Profil", "Index", "Profil") </li>
+                                        <li class="nav-item mx-0 mx-lg-1">@Html.ActionLink("A propos", "About", "Home", new { @class = "nav-link py-3 px-0 px-lg-3 rounded" })</li>
+                                        <li class="nav-item mx-0 mx-lg-1">@Html.ActionLink("Contact", "Contact", "Home", new { @class = "nav-link py-3 px-0 px-lg-3 rounded" })</li>
+                                        <li class="nav-item mx-0 mx-lg-1">@Html.ActionLink("Rechercher", "Index", "Recherche", new { @class = "nav-link py-3 px-0 px-lg-3 rounded" }) </li>
+                                        <li class="nav-item mx-0 mx-lg-1">@Html.ActionLink("Publier", "Index", "Publication", new { @class = "nav-link py-3 px-0 px-lg-3 rounded" })</li>
+                                    }
+
+
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        @if (ViewBag("Accueil") || ViewBag("A_Propos") || ViewBag("Contact") || ViewBag("Recherche") || ViewBag("Publier") || ViewBag("Publier_Mat"))
+                                        {
+                                            <li class="nav-item mx-0 mx-lg-1"> @Html.ActionLink("Profil", "Index", "Profil") </li>
+                                            <li class="nav-item mx-0 mx-lg-1">@Html.ActionLink("A propos", "About", "Home", new { @class = "nav-link py-3 px-0 px-lg-3 rounded" })</li>
+                                            <li class="nav-item mx-0 mx-lg-1">@Html.ActionLink("Contact", "Contact", "Home", new { @class = "nav-link py-3 px-0 px-lg-3 rounded" })</li>
+                                            <li class="nav-item mx-0 mx-lg-1">@Html.ActionLink("Rechercher", "Index", "Recherche", new { @class = "nav-link py-3 px-0 px-lg-3 rounded" }) </li>
+                                            <li class="nav-item mx-0 mx-lg-1">@Html.ActionLink("Publier", "Index", "Publication", new { @class = "nav-link py-3 px-0 px-lg-3 rounded" })</li>
+                                        }
+                                        @if (ViewBag("Accueil") || ViewBag("A_Propos") || ViewBag("Contact") || ViewBag("Recherche") || ViewBag("Publier") || ViewBag("Publier_Mat"))
+                                        {
+                                            <li class="nav-item mx-0 mx-lg-1">@Html.ActionLink("Admin", "Index", "Admin", new { @class = "nav-link py-3 px-0 px-lg-3 rounded" })</li>
+                                            <li class="nav-item mx-0 mx-lg-1">@Html.ActionLink("Publication en attente", "Publication", "Admin", new { @class = "nav-link py-3 px-0 px-lg-3 rounded" })</li>
+                                            <li class="nav-item mx-0 mx-lg-1">@Html.ActionLink("Gérer les Litiges", "PublicationLitige", "Admin", new { @class = "nav-link py-3 px-0 px-lg-3 rounded" })</li>
+                                            <li class="nav-item mx-0 mx-lg-1">@Html.ActionLink("Statistiques", "Statistiques", "Admin", new { @class = "nav-link py-3 px-0 px-lg-3 rounded" })</li>
+                                        }
+
+                                    }
+                                    <li class="nav-item mx-0 mx-lg-1">@Html.ActionLink("Messagerie", "Index", "Messagerie", new { @class = "nav-link py-3 px-0 px-lg-3 rounded" })</li>
+                                    <li class="nav-item mx-0 mx-lg-1">@Html.ActionLink("Déconnexion", "Deconnexion", "Login", new { @class = "nav-link py-3 px-0 px-lg-3 rounded" })</li>
+
+                                    <li>
+                                        <ul class="navbar-nav search-right mt-lg-0 mt-2">
+                                            <li class="nav-item mr-3" title="Search">
+                                                <a href="#search" class="btn search-search">
+                                                    <span class="fa fa-search "></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="nav-item mx-0 mx-lg-1">@Html.ActionLink("Se Connecter", "Index", "Login", new { @class = "nav-link py-3 px-0 px-lg-3 rounded" })</li>
+                                    <li class="nav-item mx-0 mx-lg-1">@Html.ActionLink("Créer un compte", "CreerCompte", "Login", new { @class = "nav-link py-3 px-0 px-lg-3 rounded" })</li>
+                                }
+
+                            }*@

@@ -1,0 +1,289 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayoutTest.cshtml";
+}
+
+
+<!-- introduction -->
+<section class="container-fluid introduction">
+    <div class="margin-constraint">
+        <h2 id="main-title"> Bienvenue dans le Réseau Social de l'Automobile</h2>
+        <article class="useful-width">
+            <p>
+                Depuis sa création, l'automobile est le moyen de transport qui a généré le plus de passion chez les humains.
+                Au fil des années, cette passion a fédéré des personnes autour de cet objet ;
+                en parallèle les constructeurs ont porté une grande attention aux performances, au confort, à la sécurité, mais aussi au design de leurs véhicules.
+                De nos jours, l'automobile est le moyen de transport de prédilection.
+            </p>
+            <p>
+                Le Réseau Social de l'Automobile (RSA) a pour vocation de créer une communauté de particuliers passionés par le monde de l'automobile.
+                L'objectif étant de favoriser une entraide entre personnes par le biais de ce site.
+            </p>
+            <p>
+                Le site de RSA est une plateforme de gestion de services automobiles, propose une expérience de qualité aux visiteurs du site.
+                Ce site permet également une gestion quotidienne des activités e-commerce (suivi des transactions, mise à jour du catalogue service).
+            </p>
+            @*<button onclick="location.href='@Url.Action("About", "Home")';return false;">A propos</button>
+            <button onclick="location.href='@Url.Action("Contact", "Home")';return false;">Contactez-nous</button>*@
+        </article>
+    </div>
+
+    <div class="slideshow-container">
+
+        <div class="mySlides fade">
+            <div class="row">
+                <h2 id="numbertext">XIXe siècle</h2>
+            </div>
+            <img src="images/Voitures/Voiture 1890.jpg" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+            <div class="row">
+                <h2 id="numbertext">1900</h2>
+            </div>
+            <img src="images/Voitures/Voiture 1900.jpg" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+            <div class="row">
+                <h2 id="numbertext">1910</h2>
+            </div>
+            <img src="images/Voitures/Voiture 1910.jpg" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+            <div class="row">
+                <h2 id="numbertext">1920</h2>
+            </div>
+            <img src="images/Voitures/Voiture 1920.jpg" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+            <div class="row">
+                <h2 id="numbertext">1930</h2>
+            </div>
+            <img src="images/Voitures/Voiture 1930.jpg" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+            <div class="row">
+                <h2 id="numbertext">1940</h2>
+            </div>
+            <img src="images/Voitures/Voiture 1940.jpg" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+            <div class="row">
+                <h2 id="numbertext">1950</h2>
+            </div>
+            <img src="images/Voitures/Voiture 1950.jpg" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+            <div class="row">
+                <h2 id="numbertext">1960</h2>
+            </div>
+            <img src="images/Voitures/Voiture 1960.jpg" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+            <div class="row">
+                <h2 id="numbertext">1970</h2>
+            </div>
+            <img src="images/Voitures/Voiture 1970.jpg" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+            <div class="row">
+                <h2 id="numbertext">1980</h2>
+            </div>
+            <img src="images/Voitures/Voiture 1980.jpg" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+            <div class="row">
+                <h2 id="numbertext">1990</h2>
+            </div>
+            <img src="images/Voitures/Voiture 1990.jpg" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+            <div class="row">
+                <h2 id="numbertext">2000</h2>
+            </div>
+            <img src="images/Voitures/Voiture 2000.jpg" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+            <div class="row">
+                <h2 id="numbertext">2010</h2>
+            </div>
+            <img src="images/Voitures/Voiture 2010.jpg" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+            <div class="row">
+                <h2 id="numbertext">2020</h2>
+            </div>
+            <img src="images/Voitures/Voiture 2020.jpg" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+            <div class="row">
+                <h2 id="numbertext">XXIe siècle</h2>
+            </div>
+            <img src="images/Voitures/Voiture 2030.jpg" style="width:100%">
+        </div>
+
+        <!--Slideshow automatique-->
+        <script>
+            var slideIndex = 0;
+            showSlides();
+
+            function showSlides() {
+                var i;
+                var slides = document.getElementsByClassName("mySlides");
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+                slideIndex++;
+                if (slideIndex > slides.length) { slideIndex = 1 }
+                slides[slideIndex - 1].style.display = "block";
+                setTimeout(showSlides, 2000); // Change image every 2 seconds
+            }
+        </script>
+    </div>
+</section>
+<br>
+
+
+<!-- end introduction -->
+<!-- Adherent -->
+<section class="container-fluid adherent" style="padding-top: 3%; overflow: hidden; background-color: #DADDE2;">
+    <div class="container">
+        <div class="row">
+            <h2 id="adherent" style="text-align:center;"> Rejoignez le RSA en devenant adhérent </h2>
+
+            <article class="col-md-4 col-lg-4 col-xs-12 col-sm-12" style="margin-top: 5%; margin-bottom: 5%; margin-left: auto; margin-right: auto;">
+                <h3 style="text-align: center;"> Pourquoi adhérer au RSA ? </h3>
+                <p>
+                    Le RSA est à vos côtés pour vous permettre de vivre votre passion pour les automobiles.
+                    Adhérer au RSA, c'est rejoindre une communauté de passionnés qui oeuvrent pour vous permettre de vivre pleinement votre passion.
+
+                </p>
+            </article>
+
+            <article class="col-md-4 col-lg-4 col-xs-12 col-sm-12" style="margin-top: 5%; margin-bottom: 5%; margin-left: auto; margin-right: auto;">
+                <h3 style="text-align: center;"> Avantages d'un adhérent </h3>
+                <p>
+                    Rejoindre la communauté du RSA vous permettra via ce réseau de bénéficier du savoir-faire des autres memebres,
+                    mais aussi de la vente d'objets de ces derniers.
+                    Enfin, en étant adhérent vous bénéficier de tarifs réduits pour les sessions de formation ou lors d'événements organisés par le RSA.
+                </p>
+            </article>
+            <p class="inscription" style="display: inline; background-color: #52B3B0; color: #ffffff; padding: 10px; font-size: 20px; text-align: center; "> Rejoignez-nous </p>
+        </div>
+    </div>
+</section>
+
+<!-- end Adherent -->
+
+<!-- portfolio -->
+<section class="container-fluid portfolio">
+    
+    <div class="container">
+
+        <h2 id="portfolio" style="text-align: center;"> Réalisez vos projets </h2>
+
+        <p id="portfolio-sub" style="text-align: center;"> Vous avez un projet facilitez vous la vie</p>
+        <br>
+
+        <div class="row" style="display: flex; flex-direction: row; justify-content: space-around;">
+            <article class="col-md-3 col-lg-3 col-xs-12 col-sm-12 item-folio" style="height: 300px; width: 300px;">
+                <!-- ajout d'une image avec la légende -->
+                <img src="images/portfolio/PiecesAuto.jpg" style="width:100%">
+                <p id="legend" style="color: black; font-size: 15px; text-align: center;"> Vendez des pièces automobiles</p>
+            </article>
+
+            <article class="col-md-3 col-lg-3 col-xs-12 col-sm-12 item-folio" style="height: 300px; width: 300px;">
+                <!-- ajout d'une image avec la légende -->
+                <img src="images/portfolio/Reparation-Entretien.jpg" style="width:100%">
+                <p id="legend" style="color: black; font-size: 15px;"> Mettez à disposition votre savoir-faire</p>
+            </article>
+
+            <article class="col-md-3 col-lg-3 col-xs-12 col-sm-12 item-folio" style="height: 300px; width: 300px;">
+                <!-- ajout d'une image avec la légende -->
+                <img src="images/portfolio/Evenement.jpg" style="width:100%">
+                <p id="legend" style="color: black; font-size: 15px;"> Participez à des événements ou proposez-les</p>
+            </article>
+
+            <article class="col-md-3 col-lg-3 col-xs-12 col-sm-12 item-folio" style="height: 300px; width: 300px;">
+                <!-- ajout d'une image avec la légende -->
+                <img src="images/portfolio/AtelierFormation.jpg" style="width:100%">
+                <p id="legend" style="color: black; font-size: 15px;"> Participez à des formations ou proposez-les</p>
+            </article>
+
+            <article class="col-md-3 col-lg-3 col-xs-12 col-sm-12 item-folio" style="height: 300px; width: 300px;">
+                <!-- ajout d'une image avec la légende -->
+                <img src="images/portfolio/Loca.jpg" style="width:100%">
+                <p id="legend" style="color: black; font-size: 15px;"> Profitez de location entre adhérents</p>
+            </article>
+
+            <article class="col-md-3 col-lg-3 col-xs-12 col-sm-12 item-folio" style="height: 300px; width: 300px;">
+                <!-- ajout d'une image avec la légende -->
+                <img src="images/portfolio/Materiel.jpg" style="width:100%">
+                <p id="legend" style="color: black; font-size: 15px;"> Profitez de location de matériels et/ou d'espace entre adhérents</p>
+            </article>
+
+            <article class="col-md-3 col-lg-3 col-xs-12 col-sm-12 item-folio" style="height: 300px; width: 300px;">
+                <!-- ajout d'une image avec la légende -->
+                <img src="images/portfolio/Covoit.jpg" style="width:100%">
+                <p id="legend" style="color: black; font-size: 15px;"> Partagez vos trajets avec des adhérents</p>
+            </article>
+
+        </div>
+    </div>
+
+</section>
+
+<!-- end portfolio -->
+
+<!-- messages -->
+
+<!--<section class="container-fluid messages">
+    <hr>
+    <div class="container">
+        <h2 id="messages"> Les dernières publications </h2>
+
+        <div class="row requests">
+
+            <h3 id="requests">Les dernières demandes</h3>
+            <article class="col-md-3 col-lg-3 col-xs-12 col-sm-12 item-messages">-->
+                <!-- ajout d'une image avec la légende -->
+                <!--<img src="images/portfolio/Covoiturage.jpg" style="width:100%">
+            </article>
+        </div>
+        <hr>
+
+        <div class="row offers">
+            <h3 id="offers">Les dernières offres</h3>
+            <article class="col-md-3 col-lg-3 col-xs-12 col-sm-12 item-messages">-->
+                <!-- ajout d'une image avec la légende -->
+                <!--<img src="images/portfolio/Covoiturage.jpg" style="width:100%">
+            </article>
+        </div>
+        <hr>
+
+        <div class="row events">
+            <h3 id="events">Les dernièrs événements</h3>
+            <article class="col-md-3 col-lg-3 col-xs-12 col-sm-12 item-messages">-->
+                <!-- ajout d'une image avec la légende -->
+                <!--<img src="images/portfolio/Covoiturage.jpg" style="width:100%">
+            </article>
+        </div>-->
+        <!-- ajout des messages comme sur allovoisins -->
+
+
+    <!--</div>
+
+</section>-->

@@ -1,0 +1,104 @@
+﻿@model IEnumerable<Projet2_BDD.Models.DemandeServiceImmateriel>
+@{
+    Layout = "~/Views/Shared/LayoutTest.cshtml";
+}
+
+
+
+<section>
+
+
+    <!-- ? Mettre les liens sous forme de boutons alignés, pour faire comme une sous-entete de formulaire ? -->
+    <div>
+        <div>
+            <h5>
+                @*    @Html.ActionLink(" Voir les publications de demandes de service ", "AffichageDemandeService", "Services") /     *@
+                @*@Html.ActionLink(" Voir la liste des objets à vendre ", "Liste", "Materiel") /
+        @Html.ActionLink(" événements et formations à venir ", "Evenement", "Evenement") /
+        @Html.ActionLink(" Voir les publications de locations ", "NomMéthode", "NomController")*@
+
+                @Html.ActionLink(" Retour ", "Index", "Recherche")
+            </h5>
+                </div>
+            </div>
+
+
+            <table classe="table">
+
+                <thead>
+                    <tr>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.DatePub)
+
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Categorie)
+
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Titre)
+
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Description)
+
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Budget)
+
+                        </th>
+                        <th>
+
+
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+
+                        <tr>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DatePub)
+
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Categorie)
+
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Titre)
+
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Description)
+
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Budget)
+
+                            </td>
+
+                            <td>
+                                <a asp-action="Detail" asp-route-id="@item.Id">Details</a>
+                            </td>
+
+
+                        </tr>
+                    }
+            </table>
+        </section>

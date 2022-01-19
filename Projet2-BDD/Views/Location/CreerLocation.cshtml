@@ -1,0 +1,38 @@
+﻿@model Projet2_BDD.ViewModels.LocationViewModel
+
+@{
+    Layout = "~/Views/Shared/LayoutTest.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Location</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div> <a> @Html.ActionLink("Retour", "Index", "Publication")</a></div>
+    <div> <a> @Html.ActionLink("Liste des Locations", "AfficherLocation", "Location")</a></div>
+
+    <div class="contactez-nous">
+        <h1> Location </h1>
+        <p> Veuillez choisir le type de location </p> <br /><br />
+
+        <ul class="form-input">
+            <li> @Html.ActionLink("Covoiturage ", "CreerCovoiturage", "Voiture") </li>
+            <li> @Html.ActionLink(" Location de bien matériel ", "CreerBienMateriel", "Location") </li>
+            <li> @Html.ActionLink(" Location de voiture ", "CreerVoiture", "Voiture") </li>
+        </ul>
+
+    </div>
+
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/Myscript.js"></script>
+
+</body>
+</html>

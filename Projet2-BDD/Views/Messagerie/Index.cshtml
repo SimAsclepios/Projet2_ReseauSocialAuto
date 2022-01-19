@@ -1,0 +1,101 @@
+﻿@model IEnumerable<Projet2_BDD.ViewModels.MsgUserViewModel>
+@{ Layout = "~/Views/Shared/LayoutTest.cshtml";
+}
+
+
+
+
+
+<body>
+
+    <!-- ? Mettre les liens sous forme de boutons alignés, pour faire comme une sous-entete de formulaire ? -->
+    <div>
+
+    </div>
+
+    @*  Il faut Creer un view model qui prend en attribut list<Message>, list<User>, et un string recherche. 
+        En haut (ligne 1), on ne fait pas l'IEnumerable car on appelle 1 objet contenant des listes d'objets et un string recherche qu'on va pouvoir appeler dans le formulaire
+
+        @using (Html.BeginForm())
+        {
+            <div class="form-input">
+                @Html.Label("Rechercher un adhérent : ")
+                @Html.TextBoxFor(Model. => Model., new { @class = "form-control" })
+            </div>
+
+            <div class="submit-button text-lg-right">
+                <button type="submit" value="Save">Déposer</button>
+                <button type="reset">Effacer</button>
+            </div>
+        }
+    *@
+    <table classe="table">
+        <thead>
+            <tr>
+
+                <th>
+                    Nom
+
+                </th>
+
+                <th>
+                    Prénom
+
+                </th>
+
+                <th>
+                    Dernier Message
+
+                </th>
+                <th>
+                    Date
+                </th>
+
+            </tr>
+        </thead>
+
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Destinataire.Nom);
+
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Destinataire.Prenom);
+                        
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mail.Msg);
+
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mail.DateMsg);
+
+                    </td>
+
+                    <td>
+                        @*  <a asp-action="Details" asp-route-id="@item.Destinataire.Id">Details</a>   *@
+                        <a asp-action="ListeMessage" asp-route-utilisateurId="@item.Destinataire.Id">Voir les Messages</a>
+                        @*  <a asp-action="Details" asp-route-id="@item.Categorie">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Titre">Delete</a> *@
+                    </td>
+
+                </tr>
+            }
+
+        </tbody>
+
+
+
+
+
+    </table>
+</body>

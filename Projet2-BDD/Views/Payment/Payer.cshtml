@@ -1,0 +1,23 @@
+﻿@using Microsoft.Extensions.Options 
+@model Projet2_BDD.ViewModels.PaiementChargeViewModel
+@inject IOptions<Projet2_BDD.DataStripe.StripeSettings> Stripe
+    >
+@{
+    ViewData["Title"] = "Payer";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <form action="/Payment/Charge" method="POST">
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                data-key="pk_test_oKhSR5nslBRnBZpjO6KuzZeX"
+                data-amount="@ViewBag.PaymentAmount"
+                data-name="Réseau social de l'automobile"
+                data-description="Un abonnement pour 12 euros"
+                data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                data-locale="fr"
+                data-zip-code="true"
+                data-label="@Model.Montant">
+        </script>
+    </form>
+</div>

@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Projet2_BDD.Models.Voiture>
+
+@{
+    Layout = "~/Views/Shared/LayoutTest.cshtml";
+}
+
+<section>
+
+    <!-- ? Mettre les liens sous forme de boutons alignés, pour faire comme une sous-entete de formulaire ? -->
+    <div>
+        <div>
+            <h5>
+                @*@Html.ActionLink(" Ajouter une voiture ", "CreerVoiture", "Voiture")*@
+
+                @Html.ActionLink(" Retour ", "Index", "Recherche")
+            </h5>
+        </div>
+    </div>
+
+
+    <table classe="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Utilisateur.Prenom)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Marque)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Modele)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.DispoDebut)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.DispoFin)
+                </th>
+
+            </tr>
+        </thead>
+
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Utilisateur.Prenom)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Marque);
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Modele);
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DispoDebut);
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DispoFin);
+                    </td>
+
+                    <td>
+                        <a asp-action="Detail" asp-route-id="@item.Id">Details</a>
+                    </td>
+
+                </tr>
+}
+
+        </tbody>
+
+
+
+
+
+    </table>
+</section>

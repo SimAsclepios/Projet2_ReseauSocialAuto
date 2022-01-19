@@ -1,0 +1,247 @@
+﻿@model Projet2_BDD.ViewModels.AllPost
+@*   @Projet2_BDD.ViewModels.AllPost    *@
+@{ Layout = "~/Views/Shared/LayoutTest.cshtml";
+}
+
+
+
+
+<section>
+
+    <fieldset>
+        Choisissez une Catégorie de Publication à Rechercher : <select id="CategorieRecherche" name="CategorieRecherche">
+
+            <option selected="selected">... Cliquez ici ...</option>
+
+            <option value="Les Demandes de Service">Les Demandes de Service</option>
+
+            <option value="Objets à Vendre">Objets à Vendre</option>
+
+            <option value="Evenements et Formations">Evenements et Formations</option>
+
+            <option value="Les Locations">Les Locations</option>
+
+        </select>
+
+    </fieldset>
+
+    <div></div>
+
+    <div id="Mat" style="display:none">
+        <table classe="table">
+            <thead>
+                <tr>
+
+                    <th>
+                        Titre
+
+                    </th>
+
+                    <th>
+                        Categorie
+
+                    </th>
+
+                    <th>
+                        Prix
+
+                    </th>
+
+                    <th>
+                        Date de Publication
+
+                    </th>
+                    <th>
+                        Description
+
+                    </th>
+
+
+
+                </tr>
+            </thead>
+
+
+            <tbody>
+
+                @foreach (var item in Model.Mat)
+                {
+
+                    <tr>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Titre);
+
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Categorie);
+
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Prix);
+
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DatePub);
+
+                        </td>
+
+                        <th>
+                            @Html.DisplayNameFor(model => item.Decription)
+
+                        </th>
+
+                        <td>
+                            <a asp-action="DetailsMat" asp-route-id="@item.Id">Details</a>
+                            @*  <a asp-action="Details" asp-route-id="@item.Categorie">Details</a> |
+                                <a asp-action="Delete" asp-route-id="@item.Titre">Delete</a> *@
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div id="Event" style="display:none">
+        <table classe="table">
+            <thead>
+                <tr>
+
+                    <th>
+                        Titre
+                    </th>
+
+                    <th>
+                        Date de l'évenement
+                    </th>
+
+                    <th>
+                        Lieu
+                    </th>
+
+                    <th>
+                        Nom de l'organisateur
+                    </th>
+
+                    <th>
+                        Description
+                    </th>
+
+                </tr>
+            </thead>
+
+
+            <tbody>
+
+                @foreach (var item in Model.Event)
+                {
+
+                    <tr>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Titre)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateEvent);
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Lieu);
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NomOrganisateur);
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description);
+                        </td>
+                        <td>
+                            <a asp-action="DetailsEvent" asp-route-id="@item.Id">Details</a>
+                            @*  <a asp-action="Details" asp-route-id="@item.Categorie">Details</a> |
+                                <a asp-action="Delete" asp-route-id="@item.Titre">Delete</a> *@
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <div id="Dmd" style="display:none">
+        <table classe="table">
+            <thead>
+                <tr>
+
+                    <th>
+                        Titre
+                    </th>
+
+                    <th>
+                        Date de Publication
+                    </th>
+
+                    <th>
+                        Catégorie
+                    </th>
+
+                    <th>
+                        Description
+                    </th>
+
+                    <th>
+                        Budget
+                    </th>
+
+
+                </tr>
+            </thead>
+
+
+            <tbody>
+
+                @foreach (var item in Model.Dmd)
+                {
+
+                    <tr>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Titre);
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DatePub);
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Categorie);
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description);
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Budget);
+                        </td>
+
+                        <td>
+                            <a asp-action="DetailsDmd" asp-route-id="@item.Id">Details</a>
+                            @*  <a asp-action="Details" asp-route-id="@item.Categorie">Details</a> |
+                                <a asp-action="Delete" asp-route-id="@item.Titre">Delete</a> *@
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div id="Location" style="display:none">
+
+        <div>coucou</div>
+        @*  Ici la liste des locations à afficher *@
+
+    </div>
+
+</section>

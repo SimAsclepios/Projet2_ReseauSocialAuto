@@ -1,0 +1,20 @@
+﻿@model Projet2_BDD.Models.Utilisateur
+
+<!-- A Supprimer je pense -->
+@{
+    ViewBag.Title = "Message Envoye";
+    Layout = "~/Views/Shared/LayoutTest.cshtml";
+}
+
+<body>
+
+    <h6> Votre message a bien été envoyé à @Model.Prenom @Model.Nom . @Model.Departement </h6>
+    <div></div>
+    <h1>
+            @Html.ActionLink("Retour", "Index", "Home")   
+    </h1>
+
+
+</body>
+
+

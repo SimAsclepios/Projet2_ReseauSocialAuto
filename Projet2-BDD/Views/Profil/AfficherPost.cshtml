@@ -1,0 +1,292 @@
+﻿@model Projet2_BDD.ViewModels.AllPost
+
+
+@{
+    Layout = "~/Views/Shared/LayoutTest.cshtml";
+}
+
+
+
+
+
+<section>
+    <div></div>
+
+    @{
+        try
+        {
+
+
+            @if (Model.Mat.Count != 0)
+            {
+
+
+
+                <h2> Voici vos publications de <strong> Ventes de Matériels : </strong> </h2>
+                <table classe="table">
+                    <thead>
+                        <tr>
+
+                            <th>
+                                Date de Publication
+
+                            </th>
+
+                            <th>
+                                Catégorie
+
+                            </th>
+
+                            <th>
+                                Titre
+
+                            </th>
+
+                            <th>
+                                Description
+                            </th>
+
+                            <th>
+                                Prix
+                            </th>
+
+                            <th>
+                                Etat
+                            </th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+
+                        @foreach (var item in Model.Mat)
+                        {
+
+
+                         //  string editlink = "/Services/ModifierService/" + item.Id;
+                        <tr>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DatePub)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Categorie);
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Titre);
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Decription)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Prix)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Etat)
+                            </td>
+
+                            <td>
+                                <a asp-action="DetailsMat" asp-route-id="@item.Id">Details</a> |
+                                <a asp-action="ModifierMat" asp-route-id="@item.Id">Modifier</a> |
+                                <a asp-action="SupprimerMat" asp-route-id="@item.Id">Supprimer</a>
+
+                                @*
+            @Html.ActionLink("Modifier", "Modifier", new { id = item.Id })
+            @Html.ActionLink("Supprimer", "Supprimer", new { id = item.Id })
+                                *@
+                            </td>
+
+                        </tr>
+                        }
+
+                    </tbody>
+                </table>
+            }
+
+        }
+        catch
+        {
+
+        }
+    }
+
+
+
+    <div></div>
+    <div></div>
+    @if (Model.Dmd.Any())
+    {
+
+
+
+        <h2> Voici vos publications de <strong> Demandes de Services : </strong> </h2>
+        <table classe="table">
+            <thead>
+                <tr>
+
+                    <th>
+                        Date de la Publication
+
+                    </th>
+
+                    <th>
+                        Catégorie
+
+                    </th>
+
+                    <th>
+                        Titre
+
+                    </th>
+
+                    <th>
+                        Description
+                    </th>
+
+                    <th>
+                        Budget
+                    </th>
+
+                    <th>
+                        Action
+                    </th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+
+
+                @foreach (var item in Model.Dmd)
+                {
+
+
+                    //   string editlink = "/Services/ModifierService/" + item.Id;
+                    <tr>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DatePub)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Categorie);
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Titre);
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Budget)
+                        </td>
+
+
+                        <td>
+                            <a> @Html.ActionLink("Modifier", "ModifierService", "Service") </a>|
+                            @* <a asp-action="ModifierService" asp-route-id="@item.Id">Modifier</a> *@
+                            <a asp-action="DetailsDmd" asp-route-id="@item.Id">Details</a> |
+                            <a asp-action="ModifierDmd" asp-route-id="@item.Id">Modifier</a> |
+                            <a asp-action="SupprimerDmd" asp-route-id="@item.Id">Supprimer</a>
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    }
+    <div></div>
+    <div></div>
+    @if (Model.Event.Any())
+    {
+
+
+
+        <h2> Voici vos publications de <strong> Proposition de Formations : </strong> </h2>
+        <table classe="table">
+            <thead>
+                <tr>
+
+                    <th>
+                        Date de l'évenement
+
+                    </th>
+
+                    <th>
+                        Formateur
+
+                    </th>
+
+                    <th>
+                        Titre
+
+                    </th>
+
+                    <th>
+                        Lieu
+                    </th>
+
+                    <th>
+                        Description
+                    </th>
+                    <th>
+                        Actions
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+
+                @foreach (var item in Model.Event)
+                {
+
+
+                    //   string editlink = "/Services/ModifierService/" + item.Id;
+                    <tr>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateEvent)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NomOrganisateur);
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Titre);
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Lieu)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+
+
+                        <td>
+                            <a asp-action="ModifierEvent" asp-route-id="@item.Id">Modifier</a> |
+                            <a asp-action="DetailsEvent" asp-route-id="@item.Id">Details</a> |
+                            <a asp-action="SupprimerEvent" asp-route-id="@item.Id">Supprimer</a>
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    }
+    <div></div>
+</section>

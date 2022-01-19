@@ -1,0 +1,247 @@
+﻿@model Projet2_BDD.ViewModels.VoitureViewModel
+
+@{
+    Layout = "~/Views/Shared/LayoutTest.cshtml";
+}
+
+
+
+<div class="container">
+    <div class="row">
+        <div> <a> @Html.ActionLink("Retour", "Index", "Publication")</a></div>
+
+        <!--Occupe 6 colonnes-->
+        <div class="col-6 bg-danger">
+
+            <div class="card">
+                <div class="card-header  bg-danger text-justify text-white">
+                    <h5> Location de voiture </h5>
+                    
+                </div>
+                <div class="card-body">
+
+                    @using (Html.BeginForm("CreerVoiture", "Voiture", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+
+                        <div class="row">
+                            <div class="col-md-8">
+
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        @Html.LabelFor(m => m.Marque) :
+                                        @Html.DropDownListFor(m => m.Marque, new SelectList(Enum.GetValues(typeof(Marque))), "Sélectionnez la marque", new { @id = "ddlMarque", required = "" })
+                                        <div id="autres" style="display:none;">
+                                            @Html.Label("Autre marque") :
+                                            @Html.TextBoxFor(m => Model.Marque)
+                                        </div>
+                                        @Html.ValidationMessageFor(m => m.Marque)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        @Html.LabelFor(m => m.Modele)
+                                        @Html.TextBoxFor(m => m.Modele, new { @class = "form-control", required = "" })
+                                        @Html.ValidationMessageFor(m => m.Modele)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        @Html.LabelFor(m => m.Energie) :
+                                        @Html.DropDownListFor(m => m.Energie, new SelectList(Enum.GetValues(typeof(TypeEnergie))), "Sélectionnez le type de carburant")
+                                        @Html.ValidationMessageFor(m => m.Energie)
+                                    </div>
+
+                                    @*@Html.DropDownListFor(m => m.Categorie,
+                                        new SelectList(Enum.GetValues(typeof(Categorie))),
+                                        "Selectionner une Catégorie")*@
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        <p>Sélectionnez le type de boîte :</p>
+                                        @*<div class="form-check">
+                                                <input type="radio" id="boiteChoice1"
+                                                       name="boite" value="Automatique">
+                                                <label for="boiteChoice1">Automatique</label>
+
+                                                <input type="radio" id="boiteChoice2"
+                                                       name="boite" value="Manuelle">
+                                                <label for="boiteChoice2">Manuelle</label>
+                                            </div>*@
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="boiteChoice1">
+                                            <label class="form-check-label" for="boiteChoice1">
+                                                Automatique
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="boiteChoice2" checked>
+                                            <label class="form-check-label" for="boiteChoice2">
+                                                Manuelle
+                                            </label>
+                                        </div>
+
+                                        @*@Html.LabelFor(m => m.Boite) :
+                                            @Html.RadioButton("Boite", "Automatique") : @Html.Label("Automatique")
+                                            @Html.RadioButton("Boite", "Manuelle") : @Html.Label("Manuelle")
+                                            @Html.ValidationMessageFor(m => m.Boite)*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        @Html.LabelFor(m => m.Km) :
+                                        @Html.TextBoxFor(m => m.Km)
+                                        @Html.ValidationMessageFor(m => m.Km)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        @Html.LabelFor(m => m.Annee) :
+                                        @Html.TextBoxFor(m => m.Annee)
+                                        @Html.ValidationMessageFor(m => m.Annee)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        @Html.Label("Date de début de disponibilité") :
+                                        @Html.TextBoxFor(m => m.DispoDebut, new { @class = "form-control", Type = "DateTime", placeholder = "01/11/2021", required = "" })
+                                        @Html.ValidationMessageFor(m => m.DispoDebut)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        @Html.Label("Date de fin de diponibilité") :
+                                        @Html.TextBoxFor(m => m.DispoFin, new { @class = "form-control", Type = "DateTime", placeholder = "01/11/2021", required = "" })
+                                        @Html.ValidationMessageFor(m => m.DispoFin)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        @Html.Label("Montant de la location par jour") :
+                                        @Html.TextBoxFor(m => m.MontantJour, new { @class = "form-control", placeholder = "00 €", required = "" })
+                                        @Html.ValidationMessageFor(m => m.MontantJour)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        @Html.Label("Montant par tranche de 100 km") :
+                                        @Html.TextBoxFor(m => m.MontantKm, new { @class = "form-control", placeholder = "00 €", required = "" })
+                                        @Html.ValidationMessageFor(m => m.MontantKm)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        @Html.Label("Annonce") :
+                                        @Html.TextAreaFor(m => m.Description, new { @class = "form-control", placeholder = "Publiez votre annonce", required = "" })
+                                        @Html.ValidationMessageFor(m => m.Description)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        @Html.TextBoxFor(m => Model.Image, new { @class = "form-control", type = "file", accept = "image" })
+                                        @Html.ValidationMessageFor(m => Model.Image, "", new { @class = "text-danger" })
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        <div class="submit-button text-lg-right">
+                                            <button type="submit" value="Save" class=" bg-danger">Créer publication</button>
+                                            <button type="reset" class="bg-danger">Effacer</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-6 bg-danger">
+            <div class="nav-pills">
+                <ol>
+                    @*<li class="display-all">
+                        @Html.ActionLink(" Voir les offres de location ", "AfficherVoiture", "Voiture")
+                    </li>*@
+                    <li> Louez une voiture simplement en profitant du réseau communautaire </li>
+                </ol>
+            </div>
+
+
+            <article>
+
+                <img src="~/images/portfolio/Loca.jpg" style="width:100%">
+                <p></p>
+            </article>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+@*<script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>*@
+<script src="~/Scripts/Myscript.js"></script>
+
+

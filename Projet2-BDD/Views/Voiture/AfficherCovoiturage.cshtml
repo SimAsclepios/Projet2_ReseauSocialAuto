@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Projet2_BDD.Models.Covoiturage>
+
+@{
+    Layout = "~/Views/Shared/LayoutTest.cshtml";
+}
+
+<section>
+
+    <!-- ? Mettre les liens sous forme de boutons alignés, pour faire comme une sous-entete de formulaire ? -->
+    <div>
+        <div>
+            <h5>
+                @*@Html.ActionLink(" Ajouter un covoiturage ", "CreerCovoiturage", "Voiture") /*@
+
+                @Html.ActionLink(" Retour ", "Index", "Publication")
+            </h5>
+        </div>
+    </div>
+
+
+    <table classe="table">
+        <thead>
+            <tr>
+                <th>
+                    Marque et Modèle de la voiture
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.VilleDepart)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.VilleArrivee)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.DateDepart)
+                </th>
+
+                <th>
+                    Places Restantes
+                </th>
+
+            </tr>
+        </thead>
+
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomVoiture)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.VilleDepart)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.VilleArrivee)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateDepart)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlaceRestante)
+                </td>
+
+                <td>
+                    <a asp-action="DetailBis" asp-route-id="@item.Id">Details</a>
+                </td>
+
+            </tr>
+            }
+
+        </tbody>
+
+
+
+
+
+    </table>
+</section>

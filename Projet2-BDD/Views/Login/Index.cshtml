@@ -1,0 +1,33 @@
+﻿@model Projet2_BDD.ViewModels.UtilisateurViewModel
+@{
+    Layout = "~/Views/Shared/LayoutTest.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Connexion</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <div class="form-input">
+            @Html.LabelFor(m => m.Utilisateur.Prenom)
+            @Html.TextBoxFor(m => m.Utilisateur.Prenom, new { @class = "form-control", placeholder = "Prénom" })
+
+
+            @Html.ValidationMessageFor(m => m.Utilisateur.Prenom)
+        </div>
+        <div class="form-input">
+            @Html.LabelFor(m => m.Utilisateur.Password)
+            @Html.PasswordFor(m => m.Utilisateur.Password, new { @class = "form-control", placeholder = "MotdePasse" })
+            @Html.ValidationMessageFor(m => m.Utilisateur.Password)
+        </div>
+        <div>
+            <input type="submit" value="Connexion" />
+        </div>
+    }
+</body>
+</html>

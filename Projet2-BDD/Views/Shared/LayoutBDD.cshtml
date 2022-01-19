@@ -1,0 +1,146 @@
+﻿
+<!DOCTYPE html>
+<html>
+
+<head>
+
+
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8" />
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/style.css" rel="stylesheet" />
+</head>
+<body>
+
+
+    <!-- header -->
+    <header class="container-fluid header">
+        <div class="container">
+            <div class="row">
+                <!-- logo -->
+                <div class="col-md-2">
+                    <!-- <a href="#" class="logo"></a> -->
+                    <img src="images/Logo_RSA.png" class="logo" alt="logo RSA" />
+                </div>
+
+                <!-- menu-->
+                <div class="col-md-10">
+                    <div class="banner-2">
+                        <!-- menu-top -->
+                        <div class="header-menu-top">
+                            <nav class="menu-top" id="mainNav">
+
+                                @{
+                                    if (User.Identity.IsAuthenticated)
+                                    {
+                                        <a class="navbar-brand" href="#page-top">Bonjour @User.Identity.Name</a>
+                                        <button id="button" class="btn inscription"> @Html.ActionLink("Déconnexion", "Deconnexion", "Login") </button>
+                                        <!-- <a href="Inscription" class="header-menu-top-link"> Inscription </a> -->
+                                        <!-- renvoie vers la page "Inscription" -->
+                                    }
+                                    else
+                                    {
+                                        <a class="navbar-brand" href="#page-top">Bienvenue</a>
+                                        <button id="button" class="btn inscription"> @Html.ActionLink("S'inscrire", "CreerCompte", "Login") </button>
+                                        <!-- <a href="Inscription" class="header-menu-top-link"> Inscription </a> -->
+                                        <!-- renvoie vers la page "Inscription" -->
+
+                                        <button id="button" class="btn connexion"> @Html.ActionLink("Connexion", "Index", "Login") </button>
+                                        <!-- <a href="Connexion" class="header-menu-top-link"> Connexion </a> -->
+                                        <!-- renvoie vers la page "Connexion" ou ouvre la fenêtre "Connexion" -->
+                                    }
+                                }
+                            </nav>
+                        </div>
+
+                        <!-- menu-main -->
+                        <div class="header-menu-main">
+
+                            <a href="#" class="menu-main-link"
+                               data-subnav="menu-association">@Html.ActionLink("Accueil", "Index", "Home")</a>
+                            <a href="Proposer" class="menu-main-link"
+                               data-subnav="menu-proposer"><span>Service</span></a>
+                            <a class="menu-main-link" data-subnav="menu-rechercher">@Html.ActionLink("Rechercher", "CreerDemandeService", "Services")</a>
+                            <a class="menu-main-link" data-subnav="menu-rechercher">@Html.ActionLink("Evenement", "CreerEvenement", "Evenement")</a>
+                            <a class="menu-main-link" data-subnav="menu-rechercher">@Html.ActionLink("Materiel", "CreerProposer", "Materiel")</a>
+
+                            <!-- liste de liens amenant aux pages concernées -->
+                        </div>
+                        <!-- end-banner-2 -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </header>
+    <!-- /header -->
+
+    <div id="contenu">
+        @RenderBody()
+    </div>
+
+    <!-- footer -->
+    <footer class="container-fluid footer">
+        <div class="row">
+
+            <div class="col-md-4 col-lg-4 col-xs-12 col-sm-12 footer-left">
+                <img class="logo-bottom" src="images/Logo_RSA.png" alt="Logo_RSA">
+                <!-- width="50%" height="50%" srcset="images/Logo_RSA.png 2x"> -->
+                <!-- srcset : exploitation différentes variantes de l'image
+                    modificateur x indique la densité des pixels-->
+            </div>
+
+            <div class="col-md- col-lg-4 col-xs-12 col-sm-12 footer-right">
+
+                <a href="#about">A propos</a>
+                <a href="#contact">Contact</a>
+                <a href="#pricing">Tarification</a>
+                <a href="#rules">Réglement</a>
+
+            </div>
+
+        </div>
+
+        <div class="row rights">
+            <p>
+                <span>©  </span><span class="copyright-year">2021</span><span> </span><span>RSA</span><span>. </span><span>
+                    All
+                    Rights Reserved.
+                </span>
+            </p>
+        </div>
+
+        <div class="row no-gutters social-container">
+            <div class="col">
+                <a class="social-inner" href="#">
+                    <span class="icon mdi mdi-facebook"></span><span>Facebook</span>
+                </a>
+            </div>
+            <div class="col">
+                <a class="social-inner" href="#">
+                    <span class="icon mdi mdi-instagram"></span><span>instagram</span>
+                </a>
+            </div>
+            <div class="col">
+                <a class="social-inner" href="#">
+                    <span class="icon mdi mdi-twitter"></span><span>twitter</span>
+                </a>
+            </div>
+            <div class="col">
+                <a class="social-inner" href="#">
+                    <span class="icon mdi mdi-youtube-play"></span><span>youtube</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- /footer -->
+    <!-- Bootstrap core JS-->
+    <script src="~/js/bootstrap.bundle.js"></script>
+    <!-- Core theme JS-->
+    <script src="~/js/scripts.js"></script>
+</body>
+
+</html>

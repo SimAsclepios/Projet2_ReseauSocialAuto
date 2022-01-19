@@ -1,0 +1,62 @@
+﻿@model Projet2_BDD.ViewModels.PostViewModel
+
+@{
+    Layout = "~/Views/Shared/LayoutTest.cshtml";
+
+}
+
+<div></div>
+
+@*<div>
+    <h5>
+        @Html.ActionLink(" Rechercher des Objets à Vendre ", "Recherche", "Materiel")
+    </h5>
+</div>
+
+<div></div>
+
+<div>
+    <h5>  @Html.ActionLink(" Voir les Demandes de service ", "AffichageDemandeService", "Services") </h5>
+</div>
+
+<div></div>
+
+<div>
+    <h5> @Html.ActionLink(" Voir les prochains évenements et formations ", "Evenement", "Evenement") </h5>
+</div>
+
+<div></div>
+
+<div>
+    <h5> @Html.ActionLink(" Offres de location de voiture ", "AfficherVoiture", "Voiture") </h5>
+</div>
+
+<div>
+    <h5> @Html.ActionLink(" Offres de location de matériel ", "AfficherBienMateriel", "Location") </h5>
+</div>*@
+
+<section>
+
+    <div class="container" style="position: relative">
+        <div class="img-responsive" style="width: 100%; max-width: 100%">
+            <img src="~/images/banner4.jpg" alt="bannière de la page" style="width: 100%; max-width: 100%; opacity: .4;" />
+        </div>
+
+        <div class="img-overlay" style="display: inline-block; position: absolute; display: flex; align-items: center; top: 50%; bottom: 50%;">
+
+            <button onclick="location.href='@Url.Action("Recherche", "Materiel")';return false;" class="btn btn-secondary mb-2">Rechercher des Objets à Vendre</button>
+
+            <button onclick="location.href='@Url.Action("AffichageDemandeService", "Services")';return false;" class="btn btn-secondary mb-2">Voir les Demandes de service</button>
+
+            <button onclick="location.href='@Url.Action("Evenement", "Evenement")';return false;" class="btn btn-secondary mb-2">Voir les prochains évenements et formations</button>
+
+            <button onclick="location.href='@Url.Action("AfficherBienMateriel", "Location")';return false;" class="btn btn-secondary mb-2">Offres de location de matériel</button>
+
+            <button onclick="location.href='@Url.Action("AfficherVoiture", "Voiture")';return false;" class="btn btn-secondary mb-2">Offres de location de voiture</button>
+
+            @*<button onclick="location.href='@Url.Action("CreerCovoiturage", "Voiture")';return false;" class="btn btn-secondary mb-2">Déposer une publication de Covoiturage</button>*@
+
+        </div>
+    </div>
+
+</section>

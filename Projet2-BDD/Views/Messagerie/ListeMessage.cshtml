@@ -1,0 +1,87 @@
+﻿
+@model Projet2_BDD.ViewModels.MessagesViewModels
+@{ Layout = "~/Views/Shared/LayoutTest.cshtml";
+}
+
+<body>
+
+    <h3>Destinataire : @Model.Destinataire.Prenom @Model.Destinataire.Nom.</h3>
+    <!-- ? Mettre les liens sous forme de boutons alignés, pour faire comme une sous-entete de formulaire ? -->
+    <div>
+
+    </div>
+
+    @*  Il faut Creer un view model qui prend en attribut list<Message>, list<User>, et un string recherche.
+        En haut (ligne 1), on ne fait pas l'IEnumerable car on appelle 1 objet contenant des listes d'objets et un string recherche qu'on va pouvoir appeler dans le formulaire
+
+        @using (Html.BeginForm())
+        {
+            <div class="form-input">
+                @Html.Label("Rechercher un adhérent : ")
+                @Html.TextBoxFor(Model. => Model., new { @class = "form-control" })
+            </div>
+
+            <div class="submit-button text-lg-right">
+                <button type="submit" value="Save">Déposer</button>
+                <button type="reset">Effacer</button>
+            </div>
+        }
+    *@
+
+    <div>
+
+        @foreach (var it in Model.Messages)
+        {
+
+            @if (it.DestinataireId == Model.Destinataire.Id)
+            {
+
+                <div class="MessageEnvoye">
+                    <!-- Mettre à droite et coloré -->
+                    Vous : @it.Msg : @it.DateMsg
+                </div>
+
+            }
+
+
+            @if (it.DestinataireId != Model.Destinataire.Id)
+            {
+
+                <div class="MessageRecu">
+                    <!-- Mettre à gauche et d'une autre couleur -->
+                    @Model.Destinataire.Prenom : @it.Msg : @it.DateMsg
+                </div>
+
+            }
+
+            <div> _____________________________________ </div>
+        }
+
+
+    </div>
+
+
+
+</body>
+
+
+    
+
+    <div>
+
+        @using (Html.BeginForm())
+        {
+            <div class="form-input">
+                @Html.LabelFor(m => m.MailForm.Msg)
+                @Html.TextAreaFor(m => m.MailForm.Msg, new { @class = "form-control" })
+            </div>
+
+            <div class="submit-button text-lg-right">
+                <button type="submit" value="Save">Déposer</button>
+                <button type="reset">Effacer</button>
+            </div>
+        }
+
+    </div>
+
+

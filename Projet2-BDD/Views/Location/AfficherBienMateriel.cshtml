@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Projet2_BDD.Models.BienMateriel>
+
+@{
+    Layout = "~/Views/Shared/LayoutTest.cshtml";
+}
+
+<section>
+
+    <!-- ? Mettre les liens sous forme de boutons alignés, pour faire comme une sous-entete de formulaire ? -->
+    <div>
+        <div>
+            <h5>
+                @*@Html.ActionLink(" Ajouter un bien matériel ", "CreerBienMateriel", "Location") /*@
+
+                @Html.ActionLink(" Retour ", "Index", "Recherche")
+            </h5>
+        </div>
+    </div>
+
+
+    <table classe="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Utilisateur.Prenom)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Titre)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.DispoDebut)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.DispoFin)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.MontantJour)
+                </th>
+
+            </tr>
+        </thead>
+
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Utilisateur.Prenom)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Titre);
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DispoDebut);
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DispoFin);
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MontantJour);
+                    </td>
+
+                    <td>
+                        <a asp-action="DetailsBis" asp-route-id="@item.Id">Details</a>
+                    </td>
+
+                </tr>
+            }
+
+        </tbody>
+
+
+    </table>
+</section>

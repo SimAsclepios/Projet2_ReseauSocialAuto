@@ -1,0 +1,141 @@
+﻿@model Projet2_BDD.ViewModels.BienMaterielViewModel
+
+@{
+    Layout = "~/Views/Shared/LayoutTest.cshtml";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div> <a> @Html.ActionLink("Retour", "Index", "Publication")</a></div>
+
+        <!--Occupe 6 colonnes-->
+        <div class="col-6 bg-danger">
+
+            <div class="card">
+                <div class="card-header  bg-danger text-justify text-white">
+                    <h5>Louer un bien matériel</h5>
+                </div>
+                <div class="card-body">
+
+
+                    @using (Html.BeginForm("CreerBienMateriel", "Location", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+                    {
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        @Html.LabelFor(m => m.Titre) :
+                                        @Html.TextBoxFor(m => m.Titre, new { @class = "form-control", required = "" })
+                                        @Html.ValidationMessageFor(m => m.Titre)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        <!-- Ajout de la date et de l'heure -->
+                                        @Html.Label("Date de début de disponibilité") :
+                                        @Html.TextBoxFor(m => m.DispoDebut, new { @class = "form-control", Type = "date", placeholder = "01/11/2021", required = "" })
+                                        @Html.ValidationMessageFor(m => m.DispoDebut)
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        <!-- Ajout de la date et de l'heure -->
+                                        @Html.Label("Date de fin de disponibilité") :
+                                        @Html.TextBoxFor(m => m.DispoFin, new { @class = "form-control", Type = "date", placeholder = "01/11/2021", required = "" })
+                                        @Html.ValidationMessageFor(m => m.DispoFin)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        @Html.Label("Montant de la location journalière") :
+                                        @Html.TextBoxFor(m => m.MontantJour, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.MontantJour)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        @Html.Label("Annonce")
+                                        @Html.TextAreaFor(m => m.Description, new { @class = "form-control", placeholder = "Publiez votre annonce", required = "" })
+                                        @Html.ValidationMessageFor(m => m.Description)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        @Html.TextBoxFor(m => Model.Image, new { @class = "form-control", type = "file", accept = "image" })
+                                        @Html.ValidationMessageFor(m => Model.Image, "", new { @class = "text-danger" })
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        <div class="submit-button text-lg-right">
+                                            <button type="submit" value="Save" class=" bg-danger">Créer Publication</button>
+                                            <button type="reset" class="bg-danger">Effacer</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-6 bg-danger">
+            <div class="nav-pills">
+                <ol>
+                    @*<li>
+                        @Html.ActionLink(" Voir les locations de bien matériel ", "AfficherBienMateriel", "Location")
+                    </li>*@
+                    <li>Profitez du savoir-faire des adhérents et de l'entraide de la communauté</li>
+                </ol>
+            </div>
+
+
+            <article>
+
+                <img src="~/images/portfolio/Materiel.jpg" style="width:100%">
+                <p></p>
+            </article>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script src="~/Scripts/Myscript.js"></script>

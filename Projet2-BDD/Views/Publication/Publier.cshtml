@@ -1,0 +1,211 @@
+﻿@model Projet2_BDD.ViewModels.PublicationViewModel
+
+@{
+    Layout = "~/Views/Shared/LayoutTest.cshtml";
+
+}
+
+
+<section>
+
+    <fieldset>
+        Choisissez une Catégorie de Publication : <select id="ChoisirCategorie" name="ChoisirCategorie">
+
+            <option selected="selected" value=""></option>
+
+            <option value="Demande de Service">Demande de Service</option>
+
+            <option  value="Vendre un objet">Vendre un objet</option>
+
+            <option value="Proposer un évenement">Proposer un évenement</option>
+
+            <option value="Proposer une Location">Proposer une Location</option>
+
+        </select>
+
+    </fieldset>
+
+    <div></div>
+
+
+
+
+    @*
+        @using (Html.BeginForm("CategorieList", "Publication", FormMethod.Get))
+        {
+
+            <fieldset>
+
+                Publication
+
+                @Html.DropDownList("ChoisirCategorie")
+
+                <p>
+
+                    <input type="submit" value="Submit" />
+
+                </p>
+
+            </fieldset>
+            <div> </div>
+        }
+        <div> </div>
+    *@
+
+
+
+    <div id="ProposerMateriel" style="display:none">
+        <div class="contactez-nous">
+            <h1>Déposer un service matériel</h1>
+
+            @using (Html.BeginForm("CreerProposer", "Materiel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div class="form-input">
+                    @Html.LabelFor(m => m.Mat.Titre)
+                    @Html.TextBoxFor(m => m.Mat.Titre, new { @class = "form-control", required = "" })
+
+                    @Html.ValidationMessageFor(m => m.Mat.Titre)
+                </div>
+                <div class="form-input">
+                    @Html.LabelFor(m => m.Mat.Categorie)
+                    @Html.TextBoxFor(m => m.Mat.Categorie, new { @class = "form-control", required = "" })
+
+                    @Html.ValidationMessageFor(m => m.Mat.Categorie)
+                </div>
+
+                <div class="form-input">
+                    @Html.LabelFor(m => m.Mat.Prix)
+                    @Html.TextBoxFor(m => m.Mat.Prix, new { @class = "form-control", placeholder = "20 euros", required = "" })
+
+                    @Html.ValidationMessageFor(m => m.Mat.Prix)
+                </div>
+
+                <div class="form-input">
+                    @Html.LabelFor(m => m.Mat.Description)
+                    @Html.TextBoxFor(m => m.Mat.Description, new { @class = "form-control", placeholder = "", required = "" })
+
+
+                </div>
+                <div class="form-control">
+                    @*@Html.LabelFor(m => m.Image, htmlAttributes: new { @class = "control-label" })*@
+
+                    @Html.TextBoxFor(m => Model.Mat.Image, new { @class = "form-control", type = "file", accept = "image" })
+                    @Html.ValidationMessageFor(m => Model.Mat.Image, "", new { @class = "text-danger" })
+
+                </div>
+
+                <div class="submit-button text-lg-right">
+                    <button type="submit" value="Save">Déposer</button>
+                    <button type="reset">Effacer</button>
+                </div>
+            }
+
+        </div>
+    </div>
+
+    
+
+
+    <div id="DemandeService" style="display:none">
+        <div></div>
+        <h1>Demande de Service</h1>
+
+        @using (Html.BeginForm("CreerDemandeService", "Services", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+        {
+            <div class="form-input">
+                @Html.LabelFor(d => d.Dmd.Titre)
+                @Html.TextBoxFor(d => d.Dmd.Titre, new { @class = "form-control", placeholder = "Titre", required = "" })
+                @Html.ValidationMessageFor(d => d.Dmd.Titre)
+            </div>
+            <div class="form-input">
+                @Html.DropDownListFor(d => d.Dmd.Categorie,
+                 new SelectList(Enum.GetValues(typeof(Categorie))),
+                 "Selectionner une Catégorie")
+            </div>
+            <div class="form-input">
+                @Html.LabelFor(d => d.Dmd.Description)
+                @Html.TextBoxFor(d => d.Dmd.Description, new { @class = "form-control", placeholder = "Description", required = "" })
+                @Html.ValidationMessageFor(m => m.Dmd.Titre)
+            </div>
+            <div class="form-input">
+                @Html.LabelFor(d => d.Dmd.Budget)
+                @Html.TextBoxFor(d => d.Dmd.Budget, new { @class = "form-control" })
+
+            </div>
+            <div class="form-control">
+                @*@Html.LabelFor(m => m.Image, htmlAttributes: new { @class = "control-label" })*@
+
+                @Html.TextBoxFor(d => d.Dmd.Image, new { @class = "form-control", type = "file", accept = "image" })
+                @Html.ValidationMessageFor(d => d.Dmd.Image, "", new { @class = "text-danger" })
+
+            </div>
+
+
+
+            <div class="submit-button text-lg-right">
+                <button type="submit" value="Save">Créer Publication</button>
+                <button type="reset">Effacer</button>
+            </div>
+
+        }
+    </div>
+
+    <div id="Evenement" style="display:none">
+        <div class="contactez-nous">
+            <h1>Evènement ou Formation</h1>
+
+            @using (Html.BeginForm("CreerEvenement", "Evenement", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div class="form-input">
+                    @Html.LabelFor(e => e.Event.Titre)
+                    @Html.TextBoxFor(e => e.Event.Titre, new { @class = "form-control", placeholder = "Heure de conduite", required = "" })
+
+                    @Html.ValidationMessageFor(e => e.Event.Titre)
+                </div>
+                <div class="form-input">
+                    @Html.LabelFor(e => e.Event.NomOrganisateur)
+                    @Html.TextBoxFor(e => e.Event.NomOrganisateur, new { @class = "form-control", placeholder = "Adrien Lima", required = "" })
+
+                    @Html.ValidationMessageFor(e => e.Event.NomOrganisateur)
+                </div>
+                <div class="form-input">
+                    @Html.LabelFor(e => e.Event.Date)
+                    @Html.TextBoxFor(e => e.Event.Date, new { @class = "form-control", Type = "DateTime", placeholder = "12/03/2021", required = "" })
+
+                    @Html.ValidationMessageFor(e => e.Event.Date)
+                </div>
+                <div class="form-input">
+                    @Html.LabelFor(e => e.Event.Lieu)
+                    @Html.TextBoxFor(e => e.Event.Lieu, new { @class = "form-control", placeholder = "Paris", required = "" })
+
+                    @Html.ValidationMessageFor(e => e.Event.Lieu)
+                </div>
+                <div class="form-input">
+                    @Html.LabelFor(e => e.Event.Description)
+                    @Html.TextBoxFor(e => e.Event.Description, new { @class = "form-control", required = "" })
+
+                    @Html.ValidationMessageFor(e => e.Event.Description)
+                </div>
+
+                <div class="form-control">
+                    @*@Html.LabelFor(m => m.Image, htmlAttributes: new { @class = "control-label" })*@
+
+                    @Html.TextBoxFor(e => Model.Event.Image, new { @class = "form-control", type = "file", accept = "image" })
+                    @Html.ValidationMessageFor(e => Model.Event.Image, "", new { @class = "text-danger" })
+
+                </div>
+
+
+
+                <div class="submit-button text-lg-right">
+                    <button type="submit" value="Save">Déposer</button>
+                    <button type="reset">Effacer</button>
+                </div>
+            }
+        </div>
+    </div>
+        
+    
+
+</section>

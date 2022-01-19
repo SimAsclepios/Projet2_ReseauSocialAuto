@@ -1,0 +1,130 @@
+﻿@model Projet2_BDD.ViewModels.Evenement_FormationViewModel
+
+@{
+    Layout = "~/Views/Shared/LayoutTest.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div> <a> @Html.ActionLink("Retour", "Index", "Publication")</a></div>
+
+        <!--Occupe 6 colonnes-->
+        <div class="col-6 bg-danger">
+
+            <div class="card">
+                <div class="card-header  bg-danger text-justify text-white">
+                    <h5>Evénement ou Formation</h5>
+                </div>
+                <div class="card-body">
+
+
+                    @using (Html.BeginForm("CreerEvenement", "Evenement", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        @Html.LabelFor(m => m.Titre) :
+                                        @Html.TextBoxFor(m => m.Titre, new { @class = "form-control", placeholder = "Heure de conduite", required = "" })
+                                        @Html.ValidationMessageFor(m => m.Titre)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        @Html.LabelFor(m => m.NomOrganisateur)
+                                        @Html.TextBoxFor(m => m.NomOrganisateur, new { @class = "form-control", placeholder = "Adrien Lima", required = "" })
+                                        @Html.ValidationMessageFor(m => m.NomOrganisateur)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        @Html.LabelFor(m => m.Date)
+                                        @Html.TextBoxFor(m => m.Date, new { @class = "form-control", Type = "date", placeholder = "12/03/2021", required = "" })
+                                        @Html.ValidationMessageFor(m => m.Date)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        @Html.LabelFor(m => m.Lieu)
+                                        @Html.TextBoxFor(m => m.Lieu, new { @class = "form-control", placeholder = "Paris", required = "" })
+                                        @Html.ValidationMessageFor(m => m.Lieu)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        @Html.LabelFor(m => m.Description)
+                                        @Html.TextAreaFor(m => m.Description, new { @class = "form-control", required = "" })
+                                        @Html.ValidationMessageFor(m => m.Description)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        @Html.TextBoxFor(m => Model.Image, new { @class = "form-control", type = "file", accept = "image" })
+                                        @Html.ValidationMessageFor(m => Model.Image, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        <div class="submit-button text-lg-right">
+                                            <button type="submit" value="Save" class=" bg-danger">Créer Publication</button>
+                                            <button type="reset" class="bg-danger">Effacer</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 bg-danger">
+            <div class="nav-pills">
+                <ol>
+                    <li>
+                        @Html.ActionLink("Voir Liste Evenement", "Evenement", "Evenement")
+                    </li>
+                    <li>Profitez du savoir-faire des adhérents et de l'entraide de la communauté</li>
+                </ol>
+            </div>
+
+            <article>
+                <img src="~/images/portfolio/Evenement.jpg" style="width:100%">
+                <p></p>
+            </article>
+
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,200 @@
+﻿@model Projet2_BDD.ViewModels.CreerDemandeServiceImmaterielViewModel
+
+
+@{
+    Layout = "~/Views/Shared/LayoutTest.cshtml";
+}
+
+<!--  Mettre les liens sous forme de boutons alignés, pour faire comme une sous-entete de formulaire -->
+
+
+<div class="container">
+    <div class="row">
+        <div> <a> @Html.ActionLink("Retour", "Index", "Publication")</a></div>
+
+        <!--Occupe 6 colonnes-->
+        <div class="col-6 bg-danger">
+
+            <div class="card">
+                <div class="card-header  bg-danger text-justify text-white">
+                    <h5>Demander un service</h5>
+                </div>
+                <div class="card-body">
+
+
+                    @using (Html.BeginForm("CreerDemandeService", "Services", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+                    {
+
+                        <div class="row">
+                            <div class="col-md-8">
+
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        @Html.LabelFor(m => Model.Titre)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        @Html.TextBoxFor(m => m.Titre, new { @class = "form-control", placeholder = "Titre", required = "" })
+                                        @Html.ValidationMessageFor(m => m.Titre)
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+
+                                <div class="form-group">
+
+
+                                    @Html.DropDownListFor(m => m.Categorie,
+                                    new SelectList(Enum.GetValues(typeof(Categorie))),
+                                    "Selectionner une Catégorie")
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        @Html.LabelFor(m => Model.Description)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        @Html.TextAreaFor(m => m.Description, new { @class = "form-control", placeholder = "Description", required = "" })
+                                        @Html.ValidationMessageFor(m => m.Titre)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        @Html.LabelFor(m => Model.Budget)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        @Html.TextBoxFor(m => Model.Budget, new { @class = "form-control" })
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        @*@Html.LabelFor(m => m.Image, htmlAttributes: new { @class = "control-label" })*@
+
+                                        @Html.TextBoxFor(m => Model.Image, new { @class = "form-control", type = "file", accept = "image" })
+                                        @Html.ValidationMessageFor(m => Model.Image, "", new { @class = "text-danger" })
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        <div class="submit-button text-lg-right">
+                                            <button type="submit" value="Save" class=" bg-danger">Créer Publication</button>
+                                            <button type="reset" class="bg-danger">Effacer</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-6 bg-danger">
+            <div class="nav-pills">
+                <ol>
+                    <li>
+                        @Html.ActionLink(" Voir les demandes de services ", "AffichageDemandeService", "Services")
+                    </li>
+                    <li>Profitez du savoir-faire des adhérents et de l'entraide de la communauté</li>
+                </ol>
+            </div>
+
+
+            <article>
+
+                <img src="~/images/portfolio/Reparation-Entretien.jpg" style="width:100%">
+                <p></p>
+            </article>
+        </div>
+    </div>
+</div>
+
+<!--  Mettre les liens sous forme de boutons alignés, pour faire comme une sous-entete de formulaire -->
+
+<div></div>
+
+
+@using (Html.BeginForm("CreerDemandeService", "Services", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+{
+    <div class="form-input">
+        @Html.LabelFor(m => Model.Titre)
+        @Html.TextBoxFor(m => m.Titre, new { @class = "form-control", placeholder = "Titre", required = "" })
+        @Html.ValidationMessageFor(m => m.Titre)
+    </div>
+    <div class="form-input">
+        @Html.DropDownListFor(m => m.Categorie,
+         new SelectList(Enum.GetValues(typeof(Categorie))),
+         "Selectionner une Catégorie")
+    </div>
+    <div class="form-input">
+        @Html.LabelFor(m => Model.Description)
+        @Html.TextBoxFor(m => m.Description, new { @class = "form-control", placeholder = "Description", required = "" })
+        @Html.ValidationMessageFor(m => m.Titre)
+    </div>
+    <div class="form-input">
+        @Html.LabelFor(m => Model.Budget)
+        @Html.TextBoxFor(m => Model.Budget, new { @class = "form-control" })
+
+    </div>
+    <div class="form-control">
+        @*@Html.LabelFor(m => m.Image, htmlAttributes: new { @class = "control-label" })*@
+
+        @Html.TextBoxFor(m => Model.Image, new { @class = "form-control", type = "file", accept = "image" })
+        @Html.ValidationMessageFor(m => Model.Image, "", new { @class = "text-danger" })
+
+    </div>
+
+
+
+    <div class="submit-button text-lg-right">
+        <button type="submit" value="Save">Créer Publication</button>
+        <button type="reset">Effacer</button>
+    </div>
+}

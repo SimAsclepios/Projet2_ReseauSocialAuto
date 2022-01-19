@@ -1,0 +1,67 @@
+﻿@model Projet2_BDD.ViewModels.PostViewModel
+
+@{
+    Layout = "~/Views/Shared/LayoutTest.cshtml";
+
+}
+
+<section>
+
+    <div class="container" style="position: relative">
+        <div class="img-responsive" style="width: 100%; max-width: 100%">
+            <img src="~/images/banner1.jpg" alt="bannière de la page" style="width: 100%; max-width: 100%; opacity: .4;" />
+        </div>
+
+        <div class="img-overlay" style="display: inline-block; position: absolute; display: flex; align-items: center; top: 50%; bottom: 50%;">
+
+            <button onclick="location.href='@Url.Action("CreerProposer", "Materiel")';return false;" class="btn btn-secondary mb-2">Vendre un objet</button>
+
+            <button onclick="location.href='@Url.Action("CreerDemandeService", "Services")';return false;" class="btn btn-secondary mb-2">Demander un service</button>
+
+            <button onclick="location.href='@Url.Action("CreerEvenement", "Evenement")';return false;" class="btn btn-secondary mb-2">Proposer un événement ou une formation</button>
+
+            <button onclick="location.href='@Url.Action("CreerBienMateriel", "Location")';return false;" class="btn btn-secondary mb-2">Déposer une offre de location de matériel</button>
+
+            <button onclick="location.href='@Url.Action("CreerVoiture", "Voiture")';return false;" class="btn btn-secondary mb-2">Déposer une offre de location de voiture</button>
+
+            <button onclick="location.href='@Url.Action("CreerCovoiturage", "Voiture")';return false;" class="btn btn-secondary mb-2">Déposer une publication de Covoiturage</button>
+
+        </div>
+    </div>
+
+</section>
+
+
+
+
+
+
+
+@*
+    <div></div>
+
+    <div>
+        <h5> @Html.ActionLink(" Vendre un Objet ", "CreerProposer", "Materiel") </h5>
+    </div>
+
+    <div></div>
+
+    <div>
+        <h5>  @Html.ActionLink(" Demander un service ", "CreerDemandeService", "Services") </h5>
+    </div>
+
+    <div></div>
+
+    <div>
+        <h5> @Html.ActionLink(" Proposer un Evenement ou une Formation ", "CreerEvenement", "Evenement") </h5>
+    </div>
+
+    <div></div>
+
+    <div>
+        <li> @Html.ActionLink("Covoiturage ", "CreerCovoiturage", "Voiture") </li>
+        <li> @Html.ActionLink(" Location de bien matériel ", "CreerBienMateriel", "Location") </li>
+        <li> @Html.ActionLink(" Location de voiture ", "CreerVoiture", "Voiture") </li>
+    </div>
+
+*@

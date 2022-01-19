@@ -1,0 +1,49 @@
+﻿@model Projet2_BDD.ViewModels.ProfilViewModel
+
+@{
+    Layout = "~/Views/Shared/LayoutTest.cshtml";
+
+}
+
+<div></div>
+
+<body>
+
+    <div></div>
+
+    <h6> Profil de @Html.DisplayFor(model => model.Profil.Prenom) @Html.DisplayFor(model => model.Profil.Nom)  </h6>
+    <hr />
+    <div>
+        <div>
+            <div>
+                Ville :  @Html.DisplayFor(model => model.Profil.Ville)
+            </div>
+            <div>
+                Département :   @Html.DisplayFor(model => model.Profil.Departement)
+            </div>
+           
+
+                        <div>
+                                      <img src="/uploads/@Model.Profil.PhotoProfil" width="250" height="250" asp-append-version="true" />      
+                        </div>
+           
+
+        </div>
+    </div>
+    <div>
+        Email :  @Html.DisplayFor(model => model.Profil.Email)
+
+    </div>
+
+
+
+
+    <div>
+        @Html.ActionLink("Modifier le Profil", "Modifier", "Profil") | 
+        @*   <a asp-action="Details" asp-route-id="@item.Id">Details</a>     *@
+      @Html.ActionLink("Voir vos Publications", "AfficherPost", "Profil")
+
+        @Html.ActionLink("Retour au Profil", "AfficherPost", "Profil")
+    </div>
+
+</body>

@@ -1,0 +1,26 @@
+﻿@model Projet2_BDD.ViewModels.MsgUserViewModel
+@{ Layout = "~/Views/Shared/LayoutTest.cshtml";
+}
+
+    <!-- A Supprimer je pense -->
+
+<body>
+
+    <h6>Destinataire : @Model.Destinataire.Prenom @Model.Destinataire.Nom. </h6>
+
+
+
+    @using (Html.BeginForm())
+    {
+        <div class="form-input">
+            @Html.LabelFor(m => m.Mail.Msg)
+            @Html.TextAreaFor(m => m.Mail.Msg, new { @class = "form-control" })
+        </div>
+
+        <div class="submit-button text-lg-right">
+            <button type="submit" value="Save">Déposer</button>
+            <button type="reset">Effacer</button>
+        </div>
+    }
+
+</body>

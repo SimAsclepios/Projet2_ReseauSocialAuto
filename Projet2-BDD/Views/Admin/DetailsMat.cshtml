@@ -1,0 +1,52 @@
+﻿@model Projet2_BDD.Models.ProposerServiceMateriel
+@using Projet2_BDD.Models
+
+
+<body>
+
+
+
+    <h1>@Html.DisplayFor(model => model.Titre)</h1>
+    <hr />
+    <header>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Categorie)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Categorie)
+            </dd>
+
+            <dd>
+                <img src="~/uploads/@Model.ImageName" width="250" height="250" asp-append-version="true" />
+            </dd>
+        </dl>
+    </header>
+    <article>
+        @Html.DisplayFor(model => model.Decription)
+
+    </article>
+    <article>
+        @Html.DisplayFor(model => model.Prix)
+
+    </article>
+
+    <div>
+        <a asp-action="ConformeMat" asp-route-id="@Model.Id">Autoriser la publication</a>
+    </div>
+    <div>
+        <a asp-action="NonConformeMat" asp-route-id="@Model.Id">Refuser la publication</a>
+    </div>
+    <div>
+        <a asp-action="EnvoyerMsg" asp-route-utilisateurId="@Model.Id">Contacter1</a>
+    </div>
+
+
+    <footer>
+        @Html.ActionLink("Contacter2", "ListeMessage", "Messagerie", new { Model.UtilisateurId })
+
+        @Html.ActionLink("Retour à la liste", "Publication")
+    </footer>
+
+</body>
+

@@ -1,0 +1,345 @@
+﻿@model Projet2_BDD.ViewModels.AllPost
+@{ Layout = "~/Views/Shared/LayoutTest.cshtml";
+}
+
+<body>
+    <div>
+        @Html.ActionLink("Accueil Admin", "Index", "Admin") / @Html.ActionLink("Voir les Litiges", "PublicationLitige", "Admin")
+    </div>
+
+    <table classe="table">
+        <thead>
+            <tr>
+
+                <th>
+                    Id Adhérent
+                </th>
+
+                <th>
+                    Type Publication
+                </th>
+
+                <th>
+                    Catégorie / Date Démarrage
+                </th>
+                <th>
+                    Date de Création
+                </th>
+
+            </tr>
+        </thead>
+
+
+        <tbody>
+
+            @{
+                int dmdCount = 0;
+                int matCount = 0;
+                int eventCount = 0;
+                int autoCount = 0;
+                int matLoc = 0;
+                int covoit = 0;
+
+                for (int i = 0; i < (Model.Dmd.Count + Model.Event.Count + Model.Mat.Count + Model.Auto.Count + Model.LocMat.Count); i++)
+                {
+
+                    int choix = 0; <!-- 1 : dmd    /   2 : Mat     3 : Event   4 : Location-->
+                    DateTime dateMin = new DateTime(3000, 1, 1); <!-- Si erreur date null, declarer une date an 3000 ici, et remplacer les condition null en bas par cette date -->
+                    DateTime compDate = new DateTime(3000, 1, 1);
+
+
+                    try
+                    {
+                        if (dmdCount < Model.Dmd.Count)
+                        {
+                            dateMin = Model.Dmd[dmdCount].DatePub;
+                            choix = 1;
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
+
+                    try
+                    {
+                        if (matCount < Model.Mat.Count)
+                        {
+                            if (Model.Mat[matCount].DatePub < dateMin || dateMin == compDate)
+                            {
+                                dateMin = Model.Mat[matCount].DatePub;
+                                choix = 2;
+                            }
+
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
+
+                    try
+                    {
+                        if (eventCount < Model.Event.Count)
+                        {
+                            if (Model.Event[eventCount].DatePub < dateMin || dateMin == compDate)
+                            {
+                                dateMin = Model.Event[eventCount].DatePub;
+                                choix = 3;
+                            }
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
+
+
+
+                    try
+                    {
+                        if (autoCount < Model.Auto.Count)
+                        {
+                            if (Model.Auto[autoCount].DatePub < dateMin || dateMin == compDate)
+                            {
+                                dateMin = Model.Auto[autoCount].DatePub;
+                                choix = 4;
+                            }
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
+
+                    try
+                    {
+                        if (matCount < Model.LocMat.Count)
+                        {
+                            if (Model.LocMat[matLoc].DatePub < dateMin || dateMin == compDate)
+                            {
+                                dateMin = Model.LocMat[matCount].DatePub;
+                                choix = 5;
+                            }
+
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
+
+                    @*
+                    try
+                    {
+                        if (eventCount < Model.Covoit.Count)
+                        {
+                            if (Model.Covoit[covoit].DatePub < dateMin || dateMin == compDate)
+                            {
+                                dateMin = Model.Covoit[covoit].DatePub;
+                                choix = 6;
+                            }
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
+                        *@
+
+            if (choix == 0)
+            {
+                return;
+            }
+
+            if (choix == 1)
+            {
+                dmdCount++;
+
+                        <tr>
+
+                            <td>
+                                @Model.Dmd[dmdCount - 1].UtilisateurId |
+                            </td>
+
+                            <td>
+                                Demande Service |
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model.Dmd[dmdCount - 1].Categorie) |
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => Model.Dmd[dmdCount - 1].DatePub) |
+                            </td>
+
+                            <td>
+                                @*  <a asp-action="Details" asp-route-id="@item.Destinataire.Id">Details</a>   Mettre des conditions ici aussi pour etre precis sur la route a suivre en fonction du type de publication *@
+                                <a asp-action="DetailsDmd" asp-route-id="@Model.Dmd[dmdCount-1].Id">Détails</a>
+
+                            </td>
+
+                        </tr>
+                        continue;
+                    }
+                    if (choix == 2)
+                    {
+                        matCount++;
+
+                        <tr>
+
+                            <td>
+                                @Model.Mat[matCount - 1].UtilisateurId |
+                            </td>
+
+                            <td>
+                                Vente Matériel |
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model.Mat[matCount - 1].Categorie) |
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => Model.Mat[matCount - 1].DatePub) |
+                            </td>
+
+                            <td>
+                                @*  <a asp-action="Details" asp-route-id="@item.Destinataire.Id">Details</a>   Mettre des conditions ici aussi pour etre precis sur la route a suivre en fonction du type de publication *@
+                                <a asp-action="DetailsMat" asp-route-id="@Model.Mat[matCount-1].Id">Détails</a>
+                            </td>
+
+                        </tr>
+                        continue;
+                    }
+
+                    if (choix == 3)
+                    {
+                        eventCount++;
+
+                        <tr>
+
+                            <td>
+                                @Model.Event[eventCount - 1].UtilisateurId |
+                            </td>
+
+                            <td>
+                                Evenement |
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model.Event[eventCount - 1].DateEvent) |
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => Model.Event[eventCount - 1].DatePub) |
+                            </td>
+
+                            <td>
+                                @*  <a asp-action="Details" asp-route-id="@item.Destinataire.Id">Details</a>   Mettre des conditions ici aussi pour etre precis sur la route a suivre en fonction du type de publication *@
+                                <a asp-action="DetailsEvent" asp-route-id="@Model.Event[eventCount-1].Id">Détails</a>
+                            </td>
+
+                        </tr>
+                        continue;
+
+                    }
+
+                    if (choix == 4)
+                    {
+                        autoCount++;
+
+                        <tr>
+
+                            <td>
+                                @Model.Auto[autoCount - 1].UtilisateurId |
+                            </td>
+
+                            <td>
+                                Location de voiture |
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model.Auto[autoCount - 1].DispoDebut) |
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => Model.Auto[autoCount - 1].DatePub) |
+                            </td>
+
+                            <td>
+                                @*  <a asp-action="Details" asp-route-id="@item.Destinataire.Id">Details</a>   Mettre des conditions ici aussi pour etre precis sur la route a suivre en fonction du type de publication *@
+                                @**@  <a asp-action="DetailsAuto" asp-route-id="@Model.Auto[autoCount-1].Id">Détails</a>
+
+                            </td>
+
+                        </tr>
+                        continue;
+                    }
+                    if (choix == 5)
+                    {
+                        matCount++;
+
+                        <tr>
+
+                            <td>
+                                @Model.LocMat[matLoc - 1].UtilisateurId |
+                            </td>
+
+                            <td>
+                                Location Matériel |
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => Model.LocMat[matLoc - 1].Titre) |
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => Model.LocMat[matLoc - 1].DatePub) |
+                            </td>
+
+                            <td>
+                                @*  <a asp-action="Details" asp-route-id="@item.Destinataire.Id">Details</a>   Mettre des conditions ici aussi pour etre precis sur la route a suivre en fonction du type de publication *@
+                                <a asp-action="DetailsMatLoc" asp-route-id="@Model.LocMat[matCount-1].Id">Détails</a>
+                            </td>
+
+                        </tr>
+                        continue;
+                    }
+                    @*
+                if (choix == 6)
+                {
+                    eventCount++;
+
+                    <tr>
+
+                        <td>
+                            @Model.Event[eventCount - 1].UtilisateurId |
+                        </td>
+
+                        <td>
+                            Covoiturage |
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.Event[eventCount - 1].DateEvent) |
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => Model.Event[eventCount - 1].DatePub) |
+                        </td>
+
+                        <td>
+
+                            <a asp-action="DetailsEvent" asp-route-id="@Model.Event[eventCount-1].Id">Détails</a>
+
+                        </td>
+
+                    </tr>
+                    continue;
+                    *@
+                }
+
+
+            }
+            }
+
+        </tbody>
+
+    </table>
+</body>

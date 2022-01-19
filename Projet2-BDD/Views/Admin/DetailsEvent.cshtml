@@ -1,0 +1,44 @@
+﻿@model Projet2_BDD.Models.Evenement_Formation
+@using Projet2_BDD.Models
+
+
+<body>
+
+
+
+    <h1>@Html.DisplayFor(model => model.Titre)</h1>
+    <hr />
+    <header>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.DateEvent)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.DateEvent)
+            </dd>
+
+            <dd>
+                <img src="~/uploads/@Model.ImageName" width="250" height="250" asp-append-version="true" />
+            </dd>
+        </dl>
+    </header>
+    <article>
+        @Html.DisplayFor(model => model.Description)
+
+    </article>
+
+    <div>
+        <a asp-action="ConformeEvent" asp-route-id="@Model.Id">Autoriser la publication</a>
+    </div>
+    <div>
+        <a asp-action="NonConformeEvent" asp-route-id="@Model.Id">Refuser la publication</a>
+    </div>
+
+
+    <footer>
+        @Html.ActionLink("Contacter", "ListeMessage", "Messagerie", new { Model.UtilisateurId })
+
+        @Html.ActionLink("Retour à la liste", "Publication")
+    </footer>
+
+</body>
